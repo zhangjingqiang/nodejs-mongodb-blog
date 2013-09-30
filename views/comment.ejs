@@ -1,0 +1,63 @@
+<hr>
+
+<% post.comments.forEach(function (comment, index) { %>
+  <div style="padding-left:4em">
+    <p><img src="<%= comment.head %>" class="l_head" /> <a href="<%= comment.website %>"><%= comment.name %></a></p>
+    <span class="info"> Commented at <%= comment.time %></span></p>
+    <p><%- comment.content %></p>
+  </div>
+<% }) %>
+
+<hr>
+
+<form class="form-horizontal" role="form" method="post">
+<% if (user) { %>
+  <div class="form-group">
+    <label for="name" class="col-lg-1 control-label">Username</label>
+    <div class="col-lg-4">
+      <input type="text" class="form-control" name="name" id="name" value="<%= user.name %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-lg-1 control-label">Email</label>
+    <div class="col-lg-4">
+      <input type="email" class="form-control" name="email" id="email" value="<%= user.email %>">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="website" class="col-lg-1 control-label">URL</label>
+    <div class="col-lg-4">
+      <input type="url" class="form-control" name="website" id="email" value="">
+    </div>
+  </div>
+<% } else { %>
+  <div class="form-group">
+    <label for="name" class="col-lg-1 control-label">Username</label>
+    <div class="col-lg-4">
+      <input type="text" class="form-control" name="name" id="name" placeholder="Enter username">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password" class="col-lg-1 control-label">Email</label>
+    <div class="col-lg-4">
+      <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="website" class="col-lg-1 control-label">URL</label>
+    <div class="col-lg-4">
+      <input type="url" class="form-control" name="website" id="email" placeholder="Enter url">
+    </div>
+  </div>
+<% } %>
+  <div class="form-group">
+    <div class="col-lg-5">
+      <textarea class="form-control" rows="5" cols="80" name="content" placeholder="Enter comment"></textarea>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-4">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
+</form>

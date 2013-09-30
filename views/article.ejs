@@ -1,0 +1,21 @@
+<%- include header %>
+<p>
+  <% if (user && (user.name == post.name)) { %>
+    <span><a href="/edit/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">Edit</a></span> | 
+    <span><a href="/remove/<%= post.name %>/<%= post.time.day %>/<%= post.title %>">Delete</a></span>
+  <% } %>
+</p>
+<p class="info">
+  Author: <a href="/u/<%= post.name %>"><%= post.name %></a> | 
+  Date: <%= post.time.minute %> | 
+  Tag:
+  <% post.tags.forEach(function (tag, index) { %>
+    <% if (tag.tag) { %>
+      <a class="tag" href="/tags/<%= tag.tag %>"><span class="badge"><%= tag.tag %></span></a>
+    <% } %>
+  <% }) %>
+</p>
+<p><%- post.post %></p>
+<p class="info">View: <%= post.pv %> | Comment: <%= post.comments.length %></p>
+<%- include comment %>
+<%- include footer %>
